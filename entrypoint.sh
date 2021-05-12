@@ -9,7 +9,7 @@ if [ -n "${INPUT_PROPERTIES_FILE}" ]; then
 fi
 
 exec java -jar /checkstyle.jar "${INPUT_WORKDIR}" -c "${INPUT_CHECKSTYLE_CONFIG}" ${OPT_PROPERTIES_FILE} -f xml \
- | grep -v IndentationCheck \
+ | grep -v "IndentationCheck\|checkstyle.checks.imports" \
  | reviewdog -f=checkstyle \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
