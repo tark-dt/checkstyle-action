@@ -9,7 +9,7 @@ if [ -n "${INPUT_PROPERTIES_FILE}" ]; then
 fi
 
 exec java -jar /checkstyle.jar "${INPUT_WORKDIR}" -c "${INPUT_CHECKSTYLE_CONFIG}" ${OPT_PROPERTIES_FILE} -f xml \
- | grep -v "IndentationCheck\|checkstyle.checks.imports\|Missing a Javadoc comment\|Line is longer than" \
+ | grep -v "IndentationCheck\|checkstyle.checks.imports\|Missing a Javadoc comment\|Line is longer than\|consecutive capital letter\|' must match pattern '" \
  | reviewdog -f=checkstyle \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
